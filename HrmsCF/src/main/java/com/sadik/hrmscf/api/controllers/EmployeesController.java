@@ -18,7 +18,7 @@ public class EmployeesController {
     }
 
     @PostMapping("add")
-    public void add(@RequestBody @NonNull Employee employee) {
+    public void add(@RequestBody Employee employee) {
         employeeService.add(employee);
     }
 

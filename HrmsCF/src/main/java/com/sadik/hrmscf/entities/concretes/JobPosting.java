@@ -15,12 +15,14 @@ import java.time.LocalDate;
 @EqualsAndHashCode(of = {"id"})
 public class JobPosting {
 
-    @Column(name="activate",nullable = false)
-    private boolean activate;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+
+    @Column(name="activate",nullable = false)
+    private boolean activate;
 
     @Column(name="approval_status",nullable = false)
     private String approvalStatus;
