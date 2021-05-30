@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface EmployerService {
     DataResult<Employer> save(Employer employer);
+
     Result delete(int id);
+
     DataResult<List<Employer>> getAll();
 
 }

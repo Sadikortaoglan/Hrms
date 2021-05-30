@@ -6,18 +6,18 @@ import com.sadik.hrmscf.entities.concretes.JobPosting;
 
 import java.time.LocalDate;
 import java.util.List;
+
 public interface JobPostingService {
 
-   Result add(JobPosting jobPosting);
+    Result add(JobPosting jobPosting);
 
     DataResult<List<JobPosting>> getAll();
-    DataResult<List<JobPosting>> findByIsActiveTrue();
 
-    DataResult<List<JobPosting>> findUpdatedAtIsActiveTrue(LocalDate localDate);
+    DataResult<List<JobPosting>> findByActivateTrue();
+
+    DataResult<List<JobPosting>> findByUpdatedAtAndActivateTrue(LocalDate localDate);
 
     DataResult<JobPosting> findById(int id);
-
-
 
 
 }

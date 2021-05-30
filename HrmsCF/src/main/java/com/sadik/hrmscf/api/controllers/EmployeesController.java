@@ -16,17 +16,19 @@ public class EmployeesController {
     public EmployeesController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
     @PostMapping("add")
-    public void add(@RequestBody @NonNull Employee employee){
+    public void add(@RequestBody @NonNull Employee employee) {
         employeeService.add(employee);
     }
+
     @DeleteMapping
-    public void delete(@RequestBody int id){
+    public void delete(@RequestBody int id) {
         employeeService.delete(id);
     }
 
     @GetMapping
-    public void get(@RequestBody int id){
+    public void get(@RequestBody int id) {
         employeeService.get(id);
     }
 }

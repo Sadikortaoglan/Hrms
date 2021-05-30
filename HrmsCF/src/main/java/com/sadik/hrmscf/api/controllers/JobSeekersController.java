@@ -25,13 +25,14 @@ public class JobSeekersController {
     public DataResult<List<JobSeeker>> getAll() {
         return jobSeekerService.getAll();
     }
+
     @PostMapping("/add")
-    public DataResult<JobSeeker> add(@RequestBody @NonNull JobSeeker jobSeeker ){
-       return jobSeekerService.add(jobSeeker);
+    public DataResult<JobSeeker> add(@RequestBody @NonNull JobSeeker jobSeeker) {
+        return jobSeekerService.add(jobSeeker);
     }
+
     @DeleteMapping("/delete")
-    public Result delete(@RequestBody int id)
-    {
+    public Result delete(@RequestBody int id) {
         return jobSeekerService.delete(id);
     }
 }

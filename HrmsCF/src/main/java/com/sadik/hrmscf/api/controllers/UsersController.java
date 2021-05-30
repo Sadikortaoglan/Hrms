@@ -19,16 +19,19 @@ public class UsersController {
     public UsersController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/getall")
-    public List<User> getall(){
+    public List<User> getall() {
         return userService.getAll();
     }
+
     @GetMapping
-    public void get(int id){
+    public void get(int id) {
         userService.get(id);
     }
+
     @DeleteMapping
-    public void delete(int id){
+    public void delete(int id) {
         userService.delete(id);
     }
 }

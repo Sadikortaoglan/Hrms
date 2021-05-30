@@ -7,12 +7,12 @@ import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.JobPostingDao;
-import com.sadik.hrmscf.dataAccess.abstracts.JobSeekerDao;
 import com.sadik.hrmscf.entities.concretes.JobPosting;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Service
 public class JobPostingManager implements JobPostingService {
 
     private JobPostingDao jobPostingDao;
@@ -32,14 +32,14 @@ public class JobPostingManager implements JobPostingService {
     }
 
     @Override
-    public DataResult<List<JobPosting>> findByIsActiveTrue() {
-        return new SuccessDataResult<List<JobPosting>>(jobPostingDao.findByIsActiveTrue(),Messages.Listed);
+    public DataResult<List<JobPosting>> findByActivateTrue() {
+        return new SuccessDataResult<List<JobPosting>>(jobPostingDao.findByActivateTrue(),Messages.Listed);
     }
 
     @Override
-    public DataResult<List<JobPosting>> findUpdatedAtIsActiveTrue(LocalDate localDate) {
+    public DataResult<List<JobPosting>> findByUpdatedAtAndActivateTrue(LocalDate localDate) {
         return new SuccessDataResult<List<JobPosting>>
-                (jobPostingDao.findUpdatedAtIsActiveTrue(localDate),Messages.Listed);
+                (jobPostingDao.findByUpdatedAtAndActivateTrue(localDate),Messages.Listed);
     }
 
     @Override
