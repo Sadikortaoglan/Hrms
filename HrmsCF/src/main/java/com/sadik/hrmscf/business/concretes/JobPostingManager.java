@@ -16,7 +16,7 @@ import java.util.List;
 public class JobPostingManager implements JobPostingService {
 
     private JobPostingDao jobPostingDao;
-
+	@Autowired
     public JobPostingManager(JobPostingDao jobPostingDao) {
         this.jobPostingDao = jobPostingDao;
     }
