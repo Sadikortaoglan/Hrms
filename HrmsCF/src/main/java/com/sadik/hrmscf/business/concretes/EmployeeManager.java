@@ -10,10 +10,10 @@ import java.util.List;
 @Service
 public class EmployeeManager implements EmployeeService {
     private EmployeeDao employeeDao;
+
     public EmployeeManager(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
-
 
 
     @Override

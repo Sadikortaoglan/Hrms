@@ -13,11 +13,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/employers")
-public class EmployerController {
+public class EmployersController {
 
-    private  EmployerService employerService;
+    private EmployerService employerService;
+
     @Autowired
-    public EmployerController(EmployerService employerService) {
+    public EmployersController(EmployerService employerService) {
         this.employerService = employerService;
     }
 
@@ -25,18 +26,17 @@ public class EmployerController {
     public DataResult<List<Employer>> getall() {
         return employerService.getAll();
     }
+
     @PostMapping("/add")
     public Result add(Employer employer) {
         employerService.save(employer);
         return new SuccessResult(Messages.Added);
     }
+
     @DeleteMapping
-    public Result delete(int id){
-       return employerService.delete(id);
+    public Result delete(int id) {
+        return employerService.delete(id);
     }
-
-
-
 
 
 }

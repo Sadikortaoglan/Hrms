@@ -26,20 +26,25 @@ public class EmployerManager implements EmployerService {
 
     @Override
     public DataResult<Employer> save(Employer employer) {
-        if (!BusinessRules.isFieldsEntered(employer.getCompanyName(), employer.getPasswordHash(),
+        if (!BusinessRules.isFieldsEntered(employer.getCompanyName(),
+                employer.getPasswordHash(),
                 employer.getWebSite(), employer.getEmail())) {
             return new ErrorDataResult<>(Messages.ExistsInSystem);
         }
         if (!verify(employer.getEmail(), employer.getWebSite())) {
             return new ErrorDataResult<Employer>(Messages.CorrectFormat);
+
         } else if (employerDao.findByEmail(employer.getEmail()) != null) {
             return new ErrorDataResult<Employer>(Messages.ExistsInSystem);
+
         } else if (!fakeEmailService.check()) {
             return new ErrorDataResult<>(Messages.EmailNotVerify);
+
         } else {
             return new SuccessDataResult<Employer>(Messages.Success);
         }
     }
+
     @Override
     public Result delete(int id) {
         if (employerDao.findById(id) != null) {

@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface JobSeekerService {
 
-   DataResult<JobSeeker> add(JobSeeker jobSeeker ) ;
+    DataResult<JobSeeker> add(JobSeeker jobSeeker);
 
-  Result delete(int id);
+    Result delete(int id);
 
-   Result get(int id);
+    Result get(int id);
 
-  DataResult<List<JobSeeker>> getAll();
+    DataResult<List<JobSeeker>> getAll();
 }

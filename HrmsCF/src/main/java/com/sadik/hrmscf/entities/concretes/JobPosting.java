@@ -8,29 +8,28 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name="job_posting")
+@Table(name="job_postings")
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = {"id"})
 public class JobPosting {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
 
-    @JsonIgnore
+    @Column(name="activate",nullable = false)
+    private boolean activate;
+
     @Column(name="approval_status",nullable = false)
     private String approvalStatus;
 
     @Column(name="job_decription",nullable = false,length=1000)
     private String jobDescription;
 
-    @Column(name="is_activate",nullable = false)
-    private boolean isActivate;
-
-    @JsonIgnore
     @Column(name="created_at")
     private LocalDate createdAt;
 
