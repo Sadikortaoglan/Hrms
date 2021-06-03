@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.sadik.hrmscf.core.entity.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,5 +21,5 @@ public class Token {
     private String tokenDescription;
 
     @OneToOne(mappedBy = "token")
-    private  User user;
+    private User user;
 }

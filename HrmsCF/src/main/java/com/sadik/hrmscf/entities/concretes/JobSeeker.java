@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.sadik.hrmscf.core.entity.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +31,10 @@ public class JobSeeker extends User {
 
     @Column(name="identity_number",nullable = false,length = 100)
     private String identityNumber;
+
+
+
+
 
 
 
