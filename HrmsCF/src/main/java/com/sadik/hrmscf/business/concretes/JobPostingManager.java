@@ -8,6 +8,7 @@ import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.JobPostingDao;
 import com.sadik.hrmscf.entities.concretes.JobPosting;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
