@@ -1,6 +1,6 @@
 package com.sadik.hrmscf.business.abstracts;
 
-import com.sadik.hrmscf.entities.concretes.User;
+import com.sadik.hrmscf.core.entity.User;
 
 import java.util.List;
 
