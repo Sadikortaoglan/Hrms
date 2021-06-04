@@ -1,6 +1,5 @@
 package com.sadik.hrmscf.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package com.sadik.hrmscf.core.utilities.adapters;
+package com.sadik.hrmscf.core.adapters;
 
 import MernisService.UUJKPSPublicSoap;
 import com.sadik.hrmscf.entities.concretes.JobSeeker;

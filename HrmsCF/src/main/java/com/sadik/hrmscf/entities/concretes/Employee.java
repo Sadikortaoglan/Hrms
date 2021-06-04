@@ -1,4 +1,5 @@
 package com.sadik.hrmscf.entities.concretes;
+import com.sadik.hrmscf.core.entity.User;
 import lombok.*;
 
 import javax.persistence.Column;

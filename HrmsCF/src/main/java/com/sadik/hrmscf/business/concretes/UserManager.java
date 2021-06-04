@@ -1,8 +1,8 @@
 package com.sadik.hrmscf.business.concretes;
 
 import com.sadik.hrmscf.business.abstracts.UserService;
-import com.sadik.hrmscf.dataAccess.abstracts.UserDao;
-import com.sadik.hrmscf.entities.concretes.User;
+import com.sadik.hrmscf.core.dataAccess.UserDao;
+import com.sadik.hrmscf.core.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,13 +18,13 @@ public class UserManager implements UserService {
 
     @Override
     public void get(int id) {
-        userDao.deleteById((long) id);
+        userDao.deleteById(id);
 
     }
 
     @Override
     public void delete(int id) {
-        userDao.deleteById((long) id);
+        userDao.deleteById(id);
     }
 
     @Override

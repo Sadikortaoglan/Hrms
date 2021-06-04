@@ -1,5 +1,7 @@
-package com.sadik.hrmscf.entities.concretes;
+package com.sadik.hrmscf.core.entity;
 
+import com.sadik.hrmscf.entities.concretes.Picture;
+import com.sadik.hrmscf.entities.concretes.Token;
 import lombok.*;
 import org.hibernate.annotations.GeneratorType;
 
@@ -32,6 +34,11 @@ public abstract class User {
 
     @Column(name="is_activate",nullable = false)
     private boolean isActivate;
+
+    @OneToOne(mappedBy ="user",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Picture picture;
+
 
 
     @OneToOne(cascade =CascadeType.ALL)
