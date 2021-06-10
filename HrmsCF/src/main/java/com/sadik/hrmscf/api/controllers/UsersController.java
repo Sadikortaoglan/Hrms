@@ -1,12 +1,12 @@
 package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.UserService;
+import com.sadik.hrmscf.business.constans.Messages;
 import com.sadik.hrmscf.core.entity.User;
+import com.sadik.hrmscf.core.utilities.result.Result;
+import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +33,10 @@ public class UsersController {
     @DeleteMapping
     public void delete(int id) {
         userService.delete(id);
+    }
+
+    @PostMapping("/add")
+    public Result add(@RequestBody User user){
+        return this.userService.add(user);
     }
 }
