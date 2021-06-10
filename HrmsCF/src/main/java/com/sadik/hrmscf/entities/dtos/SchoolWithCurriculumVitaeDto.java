@@ -15,7 +15,4 @@ public class SchoolWithCurriculumVitaeDto {
     private LocalDate startedDate;
     private LocalDate finishedDate;
     private boolean graduationStatus;
-
-
-
 }
