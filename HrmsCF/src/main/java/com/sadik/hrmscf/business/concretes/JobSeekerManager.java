@@ -43,7 +43,8 @@ public class JobSeekerManager implements JobSeekerService {
         if (!fakeEmailService.check()) {
             return new ErrorDataResult<>(Messages.EmailNotVerify);
         } else {
-            return new SuccessDataResult<JobSeeker>(jobSeeker, Messages.Success);
+            return new SuccessDataResult<JobSeeker>(jobSeekerDao.save(jobSeeker), Messages.Success);
+
 
         }
     }

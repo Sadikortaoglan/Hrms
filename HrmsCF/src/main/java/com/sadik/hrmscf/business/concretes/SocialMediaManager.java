@@ -10,11 +10,14 @@ import com.sadik.hrmscf.entities.concretes.SocialMedia;
 import com.sadik.hrmscf.entities.dtos.SocialMediaForCurriculumVitaeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class SocialMediaManager implements SocialMediaService {
+
     private SocialMediaDao socialMediaDao;
     private CurriculumVitaeService curriculumVitaeService;
+
     @Autowired
     public SocialMediaManager(SocialMediaDao socialMediaDao,CurriculumVitaeService curriculumVitaeService) {
         this.socialMediaDao = socialMediaDao;
