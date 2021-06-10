@@ -1,6 +1,12 @@
 package com.sadik.hrmscf.core.utilities.result;
 
+
+
 public class DataResult<T> extends Result {
+
+    public T getData() {
+        return data;
+    }
 
     private T data;
     public DataResult(T data,boolean success, String message) {
