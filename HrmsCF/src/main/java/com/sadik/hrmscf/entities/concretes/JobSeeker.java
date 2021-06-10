@@ -26,11 +26,17 @@ public class JobSeeker extends User {
     @Column(name="gender",nullable = false,length = 5)
     private String gender;
 
-    @Column(name="date_of_birth",nullable = false)
+    @Column(name="date_of_birth",nullable = true)
     private LocalDate dateOfBirth;
 
     @Column(name="identity_number",nullable = false,length = 100)
     private String identityNumber;
+
+
+    @OneToOne(mappedBy = "jobSeeker", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private CurriculumVitae curriculumVitae;
+
 
 
 

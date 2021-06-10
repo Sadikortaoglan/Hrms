@@ -1,6 +1,9 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,9 +16,11 @@ import java.util.List;
 @Data
 @Entity
 @Table(name ="curriculum_vitaes")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
 @NoArgsConstructor
 @AllArgsConstructor
+
+
+
 public class CurriculumVitae {
 
     @Id
@@ -50,8 +55,8 @@ public class CurriculumVitae {
     @OneToOne
     @MapsId
     @JoinColumn(name = "job_seeker_id")
+    @JsonIdentityReference(alwaysAsId = true)
     private JobSeeker jobSeeker;
-
 
 
 
