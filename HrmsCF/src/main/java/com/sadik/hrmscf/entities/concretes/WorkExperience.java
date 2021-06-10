@@ -12,7 +12,8 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name ="work_experiences")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "curriculumVitae"})
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "CurriculumVitae"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkExperience {
@@ -39,6 +40,5 @@ public class WorkExperience {
 
     @ManyToOne
     @JoinColumn(name = "curriculum_id")
-
     private  CurriculumVitae curriculumVitae;
 }

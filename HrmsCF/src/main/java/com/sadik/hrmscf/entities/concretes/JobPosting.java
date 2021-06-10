@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class JobPosting {
     @Column(name="activate",nullable = false)
     private boolean activate;
 
+    @JsonIgnore
     @Column(name="approval_status",nullable = false)
     private String approvalStatus;
 

@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name ="social_media")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "CurriculumVitae"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class SocialMedia {

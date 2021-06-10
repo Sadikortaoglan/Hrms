@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 @Entity
 @Table(name ="professions")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Profession {

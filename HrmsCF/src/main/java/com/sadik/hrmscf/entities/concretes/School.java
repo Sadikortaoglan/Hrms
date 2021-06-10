@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name ="schools")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "CurriculumVitae"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class School {
