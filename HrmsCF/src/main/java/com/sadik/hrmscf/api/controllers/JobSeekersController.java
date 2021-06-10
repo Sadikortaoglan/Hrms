@@ -27,7 +27,7 @@ public class JobSeekersController {
     }
 
     @PostMapping("/add")
-    public DataResult<JobSeeker> add(@RequestBody @NonNull JobSeeker jobSeeker) {
+    public DataResult<JobSeeker> add(@RequestBody JobSeeker jobSeeker) {
         return jobSeekerService.add(jobSeeker);
     }
 

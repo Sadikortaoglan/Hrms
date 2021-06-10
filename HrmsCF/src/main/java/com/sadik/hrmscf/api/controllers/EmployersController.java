@@ -27,11 +27,11 @@ public class EmployersController {
         return employerService.getAll();
     }
 
-    @PostMapping("/add")
+    /*@PostMapping("/add")
     public Result add(Employer employer) {
         employerService.save(employer);
         return new SuccessResult(Messages.Added);
-    }
+    }*/
 
     @DeleteMapping
     public Result delete(int id) {
