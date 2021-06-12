@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -22,12 +23,15 @@ public class School {
     @Column(name="id")
     private int id;
 
+    @NotNull(message = "School name cannot be empty")
     @Column(name="school_name")
     private String schoolName;
 
+    @NotNull(message = "Department name cannot be empty")
     @Column(name="department")
     private String department;
 
+    @NotNull(message = "Started date cannot be empty")
     @Column(name="started_date")
     private LocalDate startedDate;
 

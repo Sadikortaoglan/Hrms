@@ -8,6 +8,7 @@ import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.SchoolDao;
 import com.sadik.hrmscf.entities.concretes.School;
 import com.sadik.hrmscf.entities.dtos.SchoolWithCurriculumVitaeDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,22 +16,19 @@ import org.springframework.stereotype.Service;
 public class SchoolManager implements SchoolService {
     private  SchoolDao schoolDao;
     private CurriculumVitaeService curriculumVitaeService;
+   private ModelMapper modelMapper;
     @Autowired
-    public SchoolManager(SchoolDao schoolDao, CurriculumVitaeService curriculumVitaeService) {
+    public SchoolManager(SchoolDao schoolDao, CurriculumVitaeService curriculumVitaeService,
+                         ModelMapper modelMapper)
+    {
         this.schoolDao = schoolDao;
         this.curriculumVitaeService = curriculumVitaeService;
+        this.modelMapper=modelMapper;
     }
 
     @Override
     public Result schoolWithJobSeekerAdd(SchoolWithCurriculumVitaeDto schoolWithCurriculumVitaeDto) {
-        School school=new School();
-
-        school.setCurriculumVitae(curriculumVitaeService.findById(schoolWithCurriculumVitaeDto.getCurriculumId()));
-
-        school.setSchoolName(schoolWithCurriculumVitaeDto.getSchoolName());
-        school.setDepartment(schoolWithCurriculumVitaeDto.getDepartment());
-        school.setStartedDate(schoolWithCurriculumVitaeDto.getStartedDate());
-
+        School school=modelMapper.map(schoolWithCurriculumVitaeDto,School.class);
         if(!schoolWithCurriculumVitaeDto.isGraduationStatus()){
             school.setFinishedDate(schoolWithCurriculumVitaeDto.getFinishedDate());
         }

@@ -5,7 +5,9 @@ import com.sadik.hrmscf.business.abstracts.EmployerService;
 import com.sadik.hrmscf.business.abstracts.JobSeekerService;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
+import com.sadik.hrmscf.entities.concretes.Employer;
 import com.sadik.hrmscf.entities.concretes.JobSeeker;
+import com.sadik.hrmscf.entities.dtos.EmployerForRegisterDto;
 import com.sadik.hrmscf.entities.dtos.JobSeekerRegisterDto;
 import com.sadik.hrmscf.entities.dtos.UserForLoginDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +40,10 @@ public class AuthController {
     @PostMapping("/userForLogin")
     public Result login(@Valid @RequestBody UserForLoginDto userForLoginDto){
         return authService.UserForLogin(userForLoginDto);
+    }
+
+    @PostMapping("/registerForEmployer")
+    public DataResult<Employer> employerForRegister(@Valid @RequestBody EmployerForRegisterDto employerForRegisterDto){
+        return authService.registerForEmployer(employerForRegisterDto);
     }
 }

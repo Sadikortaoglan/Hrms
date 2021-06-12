@@ -2,11 +2,11 @@ package com.sadik.hrmscf.entities.concretes;
 
 import com.sadik.hrmscf.core.entity.User;
 import lombok.*;
+import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "employer_id")
 public class Employer extends User {
 
+    @NotNull(message="Company name cannot be empty")
     @Column(name="company_name",nullable = false,length = 150)
     private String companyName;
 
@@ -26,4 +27,8 @@ public class Employer extends User {
 
     @Column(name="status")
     private Boolean status;
+
+    @OneToMany(mappedBy = "employer")
+    private List<JobPosting> jobPostings;
+
 }
