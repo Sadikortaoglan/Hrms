@@ -8,29 +8,26 @@ import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.CapabilityDao;
 import com.sadik.hrmscf.entities.concretes.Capabilities;
 import com.sadik.hrmscf.entities.dtos.CapabilitiesWithCurriculumVitaeDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CapabilityManager implements CapabilityService {
 
-    private CapabilityDao capabilityDao;
-    private CurriculumVitaeService curriculumVitaeService;
+    private final CapabilityDao capabilityDao;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public CapabilityManager(CapabilityDao capabilityDao, CurriculumVitaeService curriculumVitaeService) {
+    public CapabilityManager(CapabilityDao capabilityDao,ModelMapper modelMapper) {
         this.capabilityDao = capabilityDao;
-        this.curriculumVitaeService = curriculumVitaeService;
+        this.modelMapper=modelMapper;
     }
 
     @Override
     public Result jobSeekerAdd(CapabilitiesWithCurriculumVitaeDto capabilitiesWithCurriculumVitaeDto) {
+    Capabilities capabilities=modelMapper.map(capabilitiesWithCurriculumVitaeDto,Capabilities.class);
 
-        Capabilities capabilities=new Capabilities();
-        capabilities.setCurriculumVitae(curriculumVitaeService.findById(capabilitiesWithCurriculumVitaeDto.getCurriculumId()));
-
-        capabilities.setName(capabilitiesWithCurriculumVitaeDto.getCapabilityName());
-        capabilities.setType(capabilitiesWithCurriculumVitaeDto.getCapabilityType());
 
         capabilityDao.save(capabilities);
         return new SuccessResult(Messages.Success);

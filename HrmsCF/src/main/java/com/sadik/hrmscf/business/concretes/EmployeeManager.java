@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class EmployeeManager implements EmployeeService {
-    private EmployeeDao employeeDao;
+    private final EmployeeDao employeeDao;
 
     public EmployeeManager(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;

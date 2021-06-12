@@ -15,6 +15,7 @@ import com.sadik.hrmscf.entities.concretes.JobSeeker;
 import com.sadik.hrmscf.entities.dtos.EmployerForRegisterDto;
 import com.sadik.hrmscf.entities.dtos.JobSeekerRegisterDto;
 import com.sadik.hrmscf.entities.dtos.UserForLoginDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -25,18 +26,22 @@ public class AuthManager implements AuthService {
     private JobSeekerService jobSeekerService;
     private EmployerService employerService;
     private UserService userService;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService,UserService userService) {
+    public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService,
+                       UserService userService,ModelMapper modelMapper)
+    {
         this.jobSeekerService = jobSeekerService;
         this.employerService = employerService;
         this.userService=userService;
+        this.modelMapper=modelMapper;
     }
 
     @Override
     public DataResult<JobSeeker> registerForJobSeeker(JobSeekerRegisterDto jobSeekerRegisterDto) {
 
-        JobSeeker jobSeeker = new JobSeeker();
+        /*JobSeeker jobSeeker = new JobSeeker();
 
        jobSeeker.setActivate(true);
 
@@ -46,7 +51,9 @@ public class AuthManager implements AuthService {
        jobSeeker.setIdentityNumber(jobSeekerRegisterDto.getIdentityNumber());
        jobSeeker.setPasswordHash(jobSeekerRegisterDto.getPassword());
        jobSeeker.setDateOfBirth(jobSeekerRegisterDto.getDateOfBirth());
-       jobSeeker.setGender(jobSeekerRegisterDto.getGender());
+       jobSeeker.setGender(jobSeekerRegisterDto.getGender());*/
+        JobSeeker jobSeeker=modelMapper.map(jobSeekerRegisterDto,JobSeeker.class);
+
 
         this.jobSeekerService.add(jobSeeker);
        return  new SuccessDataResult<JobSeeker>(jobSeeker,Messages.Added);
@@ -55,15 +62,9 @@ public class AuthManager implements AuthService {
 
     @Override
     public DataResult<Employer> registerForEmployer(EmployerForRegisterDto employerForRegisterDto) {
-        Employer employer=new Employer();
-
-        employer.setEmail(employerForRegisterDto.getEmail());
-        employer.setPasswordHash(employerForRegisterDto.getPassword());
-        employer.setCompanyName(employerForRegisterDto.getCompanyName());
-        employer.setWebSite(employerForRegisterDto.getWebSite());
-
+        Employer employer=modelMapper.map(employerForRegisterDto,Employer.class);
         employerService.save(employer);
-        return  new SuccessDataResult<Employer>(employer,Messages.Added);
+        return  new SuccessDataResult<>(employer,Messages.Added);
     }
 
     @Override

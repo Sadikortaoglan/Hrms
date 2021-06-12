@@ -8,6 +8,7 @@ import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.SocialMediaDao;
 import com.sadik.hrmscf.entities.concretes.SocialMedia;
 import com.sadik.hrmscf.entities.dtos.SocialMediaForCurriculumVitaeDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,12 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SocialMediaManager implements SocialMediaService {
 
     private SocialMediaDao socialMediaDao;
-    private CurriculumVitaeService curriculumVitaeService;
-
+    private final ModelMapper modelMapper;
     @Autowired
-    public SocialMediaManager(SocialMediaDao socialMediaDao,CurriculumVitaeService curriculumVitaeService) {
+    public SocialMediaManager(SocialMediaDao socialMediaDao,
+                              ModelMapper modelMapper)
+    {
         this.socialMediaDao = socialMediaDao;
-        this.curriculumVitaeService=curriculumVitaeService;
+        this.modelMapper=modelMapper;
     }
 
     @Override
@@ -32,11 +34,7 @@ public class SocialMediaManager implements SocialMediaService {
 
     @Override
     public Result SocialMediaWithJobSeeker(SocialMediaForCurriculumVitaeDto socialMediaForCurriculumVitaeDto) {
-        SocialMedia socialMedia=new SocialMedia();
-
-        socialMedia.setCurriculumVitae(curriculumVitaeService.findById(socialMediaForCurriculumVitaeDto.getCurriculumId()));
-        socialMedia.setType(socialMediaForCurriculumVitaeDto.getType());
-        socialMedia.setLink(socialMediaForCurriculumVitaeDto.getLink());
+    SocialMedia socialMedia=modelMapper.map(socialMediaForCurriculumVitaeDto,SocialMedia.class);
 
         this.socialMediaDao.save(socialMedia);
         return new SuccessResult(Messages.Success);
