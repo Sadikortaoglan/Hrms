@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
@@ -28,9 +29,12 @@ public class JobPosting {
     @Column(name="approval_status",nullable = false)
     private String approvalStatus;
 
+    @JsonIgnore
+    @Size(max = 200)
     @Column(name="job_decription",nullable = false,length=1000)
     private String jobDescription;
 
+    @JsonIgnore
     @Column(name="created_at")
     private LocalDate createdAt;
 
@@ -39,6 +43,7 @@ public class JobPosting {
 
     @Column(name="application_deadline")
     private LocalDate applicationDeadline;
+
 
     @Column(name="number_of_open_position",nullable=false)
     private int numberOfOpenPosition;
@@ -49,6 +54,7 @@ public class JobPosting {
     @ManyToOne
     @JoinColumn(name = "employer_id")
     private Employer employer;
+
 
     @ManyToOne
     @JoinColumn(name = "city_id")

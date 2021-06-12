@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sadik.hrmscf.core.entity.User;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,6 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name ="pictures")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "CurriculumVitae"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Picture {
@@ -30,6 +30,7 @@ public class Picture {
 
     @OneToOne
     @MapsId
+    @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
 
