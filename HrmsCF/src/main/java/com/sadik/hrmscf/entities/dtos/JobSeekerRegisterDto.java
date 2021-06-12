@@ -15,7 +15,7 @@ public class JobSeekerRegisterDto
     private String lastName;
     private String email;
     private String gender;
-    private String password;
+    private String passwordHash;
     private LocalDate dateOfBirth;
     private String identityNumber;
 

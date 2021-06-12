@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sadik.hrmscf.entities.concretes.Picture;
 import com.sadik.hrmscf.entities.concretes.Token;
 import lombok.*;
@@ -37,12 +38,14 @@ public class User {
     private boolean isActivate;
 
     @OneToOne(mappedBy ="user",cascade = CascadeType.ALL)
+    @JsonIgnore
     @PrimaryKeyJoinColumn
     private Picture picture;
 
 
 
     @OneToOne(cascade =CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "user_tokens",
             joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "token_id",referencedColumnName = "id")})
