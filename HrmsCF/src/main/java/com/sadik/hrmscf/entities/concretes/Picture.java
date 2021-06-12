@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name ="pictures")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "CurriculumVitae"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "curriculumVitae"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Picture {

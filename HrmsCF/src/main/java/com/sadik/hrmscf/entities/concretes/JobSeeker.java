@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sadik.hrmscf.core.entity.User;
 import lombok.*;
 
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "curriculumVitae"})
 @PrimaryKeyJoinColumn(name = "job_seeker_id")
 public class JobSeeker extends User {
 
