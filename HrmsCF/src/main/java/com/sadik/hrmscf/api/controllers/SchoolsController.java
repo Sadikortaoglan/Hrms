@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("api/school")
 public class SchoolsController {
@@ -20,7 +22,7 @@ public class SchoolsController {
     }
 
     @PostMapping("/add")
-    public Result schoolWithJobSeekerAdd(@RequestBody SchoolWithCurriculumVitaeDto schoolWithCurriculumVitaeDto)
+    public Result schoolWithJobSeekerAdd(@Valid @RequestBody SchoolWithCurriculumVitaeDto schoolWithCurriculumVitaeDto)
     {
         return  schoolService.schoolWithJobSeekerAdd(schoolWithCurriculumVitaeDto);
     }
