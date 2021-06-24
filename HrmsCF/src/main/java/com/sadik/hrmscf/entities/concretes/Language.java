@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name ="languages")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobAdvertisements"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "curriculumVitae"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Language {

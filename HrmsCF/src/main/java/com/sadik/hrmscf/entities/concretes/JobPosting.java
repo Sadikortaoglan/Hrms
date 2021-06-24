@@ -1,6 +1,9 @@
 package com.sadik.hrmscf.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,6 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = {"id"})
+
 public class JobPosting {
 
 
@@ -65,7 +69,14 @@ public class JobPosting {
     private Profession profession;
 
 
+    @ManyToOne
+    @JoinColumn(name="working_id")
+    private WorkingType workingType;
 
+    @ManyToOne
+
+    @JoinColumn(name="working_time")
+    private WorkingTime workingTime;
 
 
 }

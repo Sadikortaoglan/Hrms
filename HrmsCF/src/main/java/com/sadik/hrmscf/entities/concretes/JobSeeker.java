@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sadik.hrmscf.core.entity.User;
 import lombok.*;
@@ -37,6 +38,7 @@ public class JobSeeker extends User {
 
     @OneToOne(mappedBy = "jobSeeker", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
+    @JsonIgnore
     private CurriculumVitae curriculumVitae;
 
 
