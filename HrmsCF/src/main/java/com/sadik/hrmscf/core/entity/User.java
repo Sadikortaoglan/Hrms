@@ -1,6 +1,7 @@
 package com.sadik.hrmscf.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sadik.hrmscf.entities.concretes.Employer;
 import com.sadik.hrmscf.entities.concretes.Picture;
 import com.sadik.hrmscf.entities.concretes.Token;
 import lombok.*;
@@ -41,8 +42,6 @@ public class User {
     @JsonIgnore
     @PrimaryKeyJoinColumn
     private Picture picture;
-
-
 
     @OneToOne(cascade =CascadeType.ALL)
     @JsonIgnore

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/jobposting")
+@CrossOrigin
 public class JobPostingsController {
 
 
@@ -22,10 +23,10 @@ public class JobPostingsController {
         this.jobPostingService = jobPostingService;
     }
 
-    /*@PostMapping("/add")
+    @PostMapping("/add")
     public Result add(@RequestBody JobPosting jobPosting) {
         return this.jobPostingService.add(jobPosting);
-    }*/
+    }
 
     @GetMapping("/getall")
     public DataResult<List<JobPosting>> getAll() {

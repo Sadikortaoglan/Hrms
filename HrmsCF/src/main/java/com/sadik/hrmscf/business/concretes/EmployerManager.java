@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.sadik.hrmscf.core.utilities.security.Regex.verify;
-
 @Service
 public class EmployerManager implements EmployerService {
 
@@ -26,12 +24,12 @@ public class EmployerManager implements EmployerService {
 
     @Override
     public DataResult<Employer> save(Employer employer) {
-        if (!BusinessRules.isFieldsEntered(employer.getCompanyName(),
+      /*    if (BusinessRules.isFieldsEntered(employer.getCompanyName(),
                 employer.getPasswordHash(),
                 employer.getWebSite(), employer.getEmail())) {
             return new ErrorDataResult<>(Messages.ExistsInSystem);
         }
-        if (!verify(employer.getEmail(), employer.getWebSite())) {
+      if (!verify(employer.getEmail(), employer.getWebSite())) {
             return new ErrorDataResult<Employer>(Messages.CorrectFormat);
 
         } else if (employerDao.findByEmail(employer.getEmail()) != null) {
@@ -42,7 +40,8 @@ public class EmployerManager implements EmployerService {
 
         } else {
             return new SuccessDataResult<Employer>(Messages.Success);
-        }
+        }*/
+        return new SuccessDataResult<>(employerDao.save(employer),Messages.Added);
     }
 
     @Override

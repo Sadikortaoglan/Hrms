@@ -53,18 +53,16 @@ public class AuthManager implements AuthService {
        jobSeeker.setDateOfBirth(jobSeekerRegisterDto.getDateOfBirth());
        jobSeeker.setGender(jobSeekerRegisterDto.getGender());*/
         JobSeeker jobSeeker=modelMapper.map(jobSeekerRegisterDto,JobSeeker.class);
+        return  this.jobSeekerService.add(jobSeeker);
 
-
-        this.jobSeekerService.add(jobSeeker);
-       return  new SuccessDataResult<JobSeeker>(jobSeeker,Messages.Added);
 
     }
 
     @Override
     public DataResult<Employer> registerForEmployer(EmployerForRegisterDto employerForRegisterDto) {
         Employer employer=modelMapper.map(employerForRegisterDto,Employer.class);
-        employerService.save(employer);
-        return  new SuccessDataResult<>(employer,Messages.Added);
+       return employerService.save(employer);
+
     }
 
     @Override

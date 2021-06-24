@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name ="capabilities")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "CurriculumVitae"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "curriculumVitae"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Capabilities {
