@@ -30,5 +30,6 @@ public class Profession {
     private boolean isActive;
 
     @OneToMany(mappedBy="profession")
+    @JsonIgnore
     private List<JobPosting> jobPostings;
 }

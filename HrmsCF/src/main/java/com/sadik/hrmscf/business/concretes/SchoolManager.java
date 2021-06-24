@@ -3,7 +3,9 @@ package com.sadik.hrmscf.business.concretes;
 import com.sadik.hrmscf.business.abstracts.CurriculumVitaeService;
 import com.sadik.hrmscf.business.abstracts.SchoolService;
 import com.sadik.hrmscf.business.constans.Messages;
+import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
+import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.SchoolDao;
 import com.sadik.hrmscf.entities.concretes.School;
@@ -11,6 +13,8 @@ import com.sadik.hrmscf.entities.dtos.SchoolWithCurriculumVitaeDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SchoolManager implements SchoolService {
@@ -39,5 +43,10 @@ public class SchoolManager implements SchoolService {
         }
        this.schoolDao.save(school);
         return  new SuccessResult(Messages.Success);
+    }
+
+    @Override
+    public DataResult<List<School>> getall() {
+        return new SuccessDataResult<>(schoolDao.findAll(),Messages.Listed);
     }
 }

@@ -3,7 +3,9 @@ package com.sadik.hrmscf.business.concretes;
 import com.sadik.hrmscf.business.abstracts.CurriculumVitaeService;
 import com.sadik.hrmscf.business.abstracts.LanguageService;
 import com.sadik.hrmscf.business.constans.Messages;
+import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
+import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.LanguageDao;
 import com.sadik.hrmscf.entities.concretes.Language;
@@ -11,6 +13,7 @@ import com.sadik.hrmscf.entities.dtos.LanguageWithCurriculumVitaeDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class LanguageManager implements LanguageService {
@@ -27,9 +30,8 @@ public class LanguageManager implements LanguageService {
         this.modelMapper=modelMapper;
     }
     @Override
-    public Result getall() {
-        languageDao.findAll();
-        return new SuccessResult(Messages.Listed);
+    public DataResult<List<Language>> getall() {
+        return new SuccessDataResult<>(languageDao.findAll(),Messages.Listed);
     }
 
     @Override

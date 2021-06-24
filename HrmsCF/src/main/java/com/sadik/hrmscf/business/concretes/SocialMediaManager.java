@@ -3,7 +3,9 @@ package com.sadik.hrmscf.business.concretes;
 import com.sadik.hrmscf.business.abstracts.CurriculumVitaeService;
 import com.sadik.hrmscf.business.abstracts.SocialMediaService;
 import com.sadik.hrmscf.business.constans.Messages;
+import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
+import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.SocialMediaDao;
 import com.sadik.hrmscf.entities.concretes.SocialMedia;
@@ -12,6 +14,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Service
 public class SocialMediaManager implements SocialMediaService {
@@ -39,5 +43,10 @@ public class SocialMediaManager implements SocialMediaService {
         this.socialMediaDao.save(socialMedia);
         return new SuccessResult(Messages.Success);
 
+    }
+
+    @Override
+    public DataResult<List<SocialMedia>> getall() {
+        return new SuccessDataResult<>(socialMediaDao.findAll(),Messages.Listed);
     }
 }
