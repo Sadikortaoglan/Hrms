@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmployerForRegisterDto {
 
+
     private String email;
     private String passwordHash;
     private String companyName;

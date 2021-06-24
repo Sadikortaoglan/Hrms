@@ -2,6 +2,7 @@ package com.sadik.hrmscf.business.concretes;
 
 import com.sadik.hrmscf.business.abstracts.JobSeekerService;
 import com.sadik.hrmscf.business.constans.Messages;
+import com.sadik.hrmscf.core.adapters.mail.MailService;
 import com.sadik.hrmscf.core.utilities.business.BusinessRules;
 import com.sadik.hrmscf.core.utilities.email.FakeEmailService;
 import com.sadik.hrmscf.core.utilities.result.*;
@@ -17,19 +18,21 @@ public class JobSeekerManager implements JobSeekerService {
 
     private JobSeekerDao jobSeekerDao;
     private FakeEmailService fakeEmailService;
+    private MailService mailService;
 
     @Autowired
     public JobSeekerManager(JobSeekerDao jobSeekerDao,
-                            FakeEmailService fakeEmailService) {
+                            FakeEmailService fakeEmailService,MailService mailService) {
         this.jobSeekerDao = jobSeekerDao;
         this.fakeEmailService = fakeEmailService;
+        this.mailService=mailService;
 
     }
 
     @Override
     public DataResult<JobSeeker> add(JobSeeker jobSeeker) {
 
-        if (!BusinessRules.isFieldsEntered(jobSeeker.getLastName(), jobSeeker.getIdentityNumber(), jobSeeker.getFirstName(),
+        if (BusinessRules.isFieldsEntered(jobSeeker.getLastName(), jobSeeker.getIdentityNumber(), jobSeeker.getFirstName(),
                 String.valueOf(jobSeeker.getDateOfBirth()), jobSeeker.getEmail())) {
             return new ErrorDataResult<JobSeeker>(Messages.RequiredFields);
         }
@@ -43,6 +46,7 @@ public class JobSeekerManager implements JobSeekerService {
         if (!fakeEmailService.check()) {
             return new ErrorDataResult<>(Messages.EmailNotVerify);
         } else {
+            mailService.sendMail(jobSeeker.getEmail(),"Hrms doğrulama kodu","sitemize keşke gelmeseydin işsiz :D");
             return new SuccessDataResult<JobSeeker>(jobSeekerDao.save(jobSeeker), Messages.Success);
 
 
