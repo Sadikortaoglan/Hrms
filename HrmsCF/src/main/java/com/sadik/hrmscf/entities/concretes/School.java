@@ -1,5 +1,6 @@
 package com.sadik.hrmscf.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,6 +43,7 @@ public class School {
     private boolean graduationStatus;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="curriculum_id")
     private CurriculumVitae curriculumVitae;
 

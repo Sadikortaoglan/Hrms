@@ -3,7 +3,9 @@ package com.sadik.hrmscf.business.concretes;
 import com.sadik.hrmscf.business.abstracts.CurriculumVitaeService;
 import com.sadik.hrmscf.business.abstracts.WorkExperienceService;
 import com.sadik.hrmscf.business.constans.Messages;
+import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
+import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.WorkExperienceDao;
 import com.sadik.hrmscf.entities.concretes.WorkExperience;
@@ -11,6 +13,8 @@ import com.sadik.hrmscf.entities.dtos.WorkExperienceForCurriculumVitaeDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class WorkExperienceManager implements WorkExperienceService {
@@ -56,4 +60,10 @@ public class WorkExperienceManager implements WorkExperienceService {
         workExperienceDao.save(workExperience);
         return new SuccessResult(Messages.Success);
     }
+
+    @Override
+    public DataResult<List<WorkExperience>> getall() {
+        return new SuccessDataResult<>(workExperienceDao.findAll(),Messages.Listed);
+    }
+
 }
