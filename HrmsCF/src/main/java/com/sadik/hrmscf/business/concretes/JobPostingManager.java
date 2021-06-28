@@ -8,6 +8,8 @@ import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
 import com.sadik.hrmscf.dataAccess.abstracts.JobPostingDao;
 import com.sadik.hrmscf.entities.concretes.JobPosting;
+import com.sadik.hrmscf.entities.dtos.JobPostingForEmployerDto;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +19,20 @@ import java.util.List;
 public class JobPostingManager implements JobPostingService {
 
     private JobPostingDao jobPostingDao;
+    private ModelMapper modelMapper;
 	@Autowired
-    public JobPostingManager(JobPostingDao jobPostingDao) {
+    public JobPostingManager(JobPostingDao jobPostingDao, ModelMapper modelMapper) {
         this.jobPostingDao = jobPostingDao;
+        this.modelMapper=modelMapper;
     }
+
     @Override
-    public Result add(JobPosting jobPosting) {
-        this.jobPostingDao.save(jobPosting);
-        return new SuccessResult(Messages.Success);
+    public Result add(JobPostingForEmployerDto jobPostingForEmployerDto) {
+    JobPosting jobPosting=modelMapper.map(jobPostingForEmployerDto,JobPosting.class);
+        jobPosting.setApprovalStatus(false);
+        jobPosting.setActivate(false);
+    jobPostingDao.save(jobPosting);
+    return new SuccessResult(Messages.Success);
     }
 
     @Override

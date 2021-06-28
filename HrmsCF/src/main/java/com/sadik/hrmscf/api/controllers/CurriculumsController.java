@@ -27,4 +27,9 @@ public class CurriculumsController {
     public DataResult<List<CurriculumVitae>> getall(){
        return curriculumVitaeService.getAll();
     }
+    @GetMapping("/findByJobSeekerId")
+    public CurriculumVitae findByJobSeekerId(@RequestParam int id){
+       return curriculumVitaeService.findByJobSeekerId(id);
+
+    }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/languages")
+@CrossOrigin
 public class LanguagesController {
 
     private LanguageService languageService;
@@ -18,7 +19,7 @@ public class LanguagesController {
         this.languageService = languageService;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/languageWithJobSeekerAdd")
     public Result languageWithJobSeekerAdd(@RequestBody LanguageWithCurriculumVitaeDto languageWithCurriculumVitaeDto)
     {
         return languageService.languageWithJobSeekerAdd(languageWithCurriculumVitaeDto);

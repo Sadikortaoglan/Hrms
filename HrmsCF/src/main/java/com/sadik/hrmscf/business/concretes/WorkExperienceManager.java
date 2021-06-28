@@ -30,12 +30,6 @@ public class WorkExperienceManager implements WorkExperienceService {
     }
 
     @Override
-    public Result add(WorkExperience workExperience) {
-        workExperienceDao.save(workExperience);
-        return new SuccessResult(Messages.Added);
-    }
-
-    @Override
     public Result delete(int id) {
         workExperienceDao.deleteById(id);
         return new SuccessResult(Messages.Deleted);
@@ -44,7 +38,6 @@ public class WorkExperienceManager implements WorkExperienceService {
     @Override
     public Result workExperienceForJobSeekerAdd(WorkExperienceForCurriculumVitaeDto workExperienceForCurriculumVitaeDto) {
      WorkExperience workExperience=modelMapper.map(workExperienceForCurriculumVitaeDto,WorkExperience.class);
-
       /*  WorkExperience workExperience = new WorkExperience();
 
         workExperience.setCurriculumVitae(curriculumVitaeService.findById(workExperienceForCurriculumVitaeDto.getCurriculumId()));

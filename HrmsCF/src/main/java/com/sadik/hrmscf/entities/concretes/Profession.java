@@ -27,6 +27,7 @@ public class Profession {
     private String description;
 
     @Column(name ="is_active")
+
     private boolean isActive;
 
     @OneToMany(mappedBy="profession")

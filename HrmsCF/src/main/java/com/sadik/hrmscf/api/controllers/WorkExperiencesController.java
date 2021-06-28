@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/workExperiences")
+@CrossOrigin
 public class WorkExperiencesController {
 
     private WorkExperienceService workExperienceService;
@@ -17,11 +18,6 @@ public class WorkExperiencesController {
     public WorkExperiencesController(WorkExperienceService workExperienceService) {
         this.workExperienceService = workExperienceService;
     }
-    @PostMapping("/add")
-    public Result add(@RequestBody WorkExperience workExperience){
-        return workExperienceService.add(workExperience);
-    }
-
     @PostMapping("/workExperienceForJobSeekerAdd")
     public Result workExperienceForJobSeekerAdd(@RequestBody  WorkExperienceForCurriculumVitaeDto workExperienceForCurriculumVitaeDto ){
         return workExperienceService.workExperienceForJobSeekerAdd(workExperienceForCurriculumVitaeDto);
@@ -30,5 +26,10 @@ public class WorkExperiencesController {
     @GetMapping("/getall")
     public DataResult<List<WorkExperience>> getall(){
         return workExperienceService.getall();
+    }
+
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam int id){
+        return workExperienceService.delete(id);
     }
 }
