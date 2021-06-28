@@ -2,10 +2,7 @@ package com.sadik.hrmscf.business.concretes;
 
 import com.sadik.hrmscf.business.abstracts.CurriculumVitaeService;
 import com.sadik.hrmscf.business.constans.Messages;
-import com.sadik.hrmscf.core.utilities.result.DataResult;
-import com.sadik.hrmscf.core.utilities.result.Result;
-import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
-import com.sadik.hrmscf.core.utilities.result.SuccessResult;
+import com.sadik.hrmscf.core.utilities.result.*;
 import com.sadik.hrmscf.dataAccess.abstracts.CurriculumVitaeDao;
 import com.sadik.hrmscf.entities.concretes.CurriculumVitae;
 import com.sadik.hrmscf.entities.dtos.CoverletterForCurriculumVitaeDto;
@@ -44,6 +41,11 @@ public class CurriculumVitaeManager implements CurriculumVitaeService {
         curriculumVitaeDao.save(curriculumVitae);
 
         return new SuccessResult(Messages.Success);
+    }
+
+    @Override
+    public CurriculumVitae findByJobSeekerId(int id) {
+        return curriculumVitaeDao.findByJobSeekerId(id);
     }
 
 

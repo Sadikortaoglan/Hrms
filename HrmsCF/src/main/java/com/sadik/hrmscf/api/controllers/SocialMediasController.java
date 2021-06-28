@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("api/socialmedia")
+@CrossOrigin
 public class SocialMediasController {
 
     private SocialMediaService socialMediaService;
@@ -19,7 +20,7 @@ public class SocialMediasController {
         this.socialMediaService = socialMediaService;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/SocialMediaWithJobSeeker")
 
     public Result SocialMediaWithJobSeeker(@RequestBody SocialMediaForCurriculumVitaeDto socialMediaForCurriculumVitaeDto){
         return socialMediaService.SocialMediaWithJobSeeker(socialMediaForCurriculumVitaeDto);

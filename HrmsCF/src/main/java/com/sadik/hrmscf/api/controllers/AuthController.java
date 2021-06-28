@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("api/auth")
-
+@CrossOrigin
 public class AuthController {
     JobSeekerService jobSeekerService;
     EmployerService employerService;

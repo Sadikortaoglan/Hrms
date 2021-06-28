@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 @RestController
 @RequestMapping("api/school")
+@CrossOrigin
 public class SchoolsController {
     private SchoolService schoolService;
 
@@ -20,7 +21,7 @@ public class SchoolsController {
         this.schoolService = schoolService;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/schoolWithJobSeekerAdd")
     public Result schoolWithJobSeekerAdd(@Valid @RequestBody SchoolWithCurriculumVitaeDto schoolWithCurriculumVitaeDto)
     {
         return  schoolService.schoolWithJobSeekerAdd(schoolWithCurriculumVitaeDto);

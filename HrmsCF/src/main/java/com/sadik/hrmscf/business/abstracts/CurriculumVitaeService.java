@@ -15,4 +15,5 @@ public interface CurriculumVitaeService {
 
     Result coverletForJobSeekerAdd(CoverletterForCurriculumVitaeDto coverletterForCurriculumVitaeDto);
 
+  CurriculumVitae findByJobSeekerId(int id);
 }

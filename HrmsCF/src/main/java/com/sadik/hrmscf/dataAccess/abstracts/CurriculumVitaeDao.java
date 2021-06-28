@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CurriculumVitaeDao extends JpaRepository<CurriculumVitae,Integer>
 {
     CurriculumVitae findById(int id);
+   CurriculumVitae findByJobSeekerId(int id);
 
 }

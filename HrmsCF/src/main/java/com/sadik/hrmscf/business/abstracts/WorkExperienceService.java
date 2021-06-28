@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.List;
 public interface WorkExperienceService {
 
-    Result add(WorkExperience workExperience);
     Result delete(int id);
 
     Result workExperienceForJobSeekerAdd(WorkExperienceForCurriculumVitaeDto workExperienceForCurriculumVitaeDto);
