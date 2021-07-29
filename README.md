@@ -205,3 +205,7 @@
 - Spring FrameWork Ekosistemi [Spring Ekosistemi](https://medium.com/huawei-developers-tr/2-spring-nedir-spring-boot-ve-spring-framework-neden-kullanılır-2cccb8f3a4fa)
 - Hibernate Mapping : [Hibernatte Inheritance Mapping](https://www.baeldung.com/hibernate-inheritance)
 - ModelMapper : [ModelMapper](https://www.baeldung.com/java-modelmapper-lists)
+
+
+---
+- I develop the Frontend side of this project whenever I have the opportunity.[Frontend](https://github.com/Sadikortaoglan/Hrms-Frontend)
