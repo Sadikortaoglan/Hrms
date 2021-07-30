@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class JobSeekerRegisterDto
 {
+    private int userId;
     private String firstName;
     private String lastName;
     private String email;
