@@ -1,13 +1,11 @@
 package com.sadik.hrmscf.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -44,6 +42,8 @@ public class JobPosting {
     private LocalDate updatedAt;
 
     @Column(name="application_deadline")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Future
     private LocalDate applicationDeadline;
 
 
@@ -65,6 +65,7 @@ public class JobPosting {
 
     @ManyToOne
     @JoinColumn(name="profession_id")
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Profession profession;
 
 

@@ -14,16 +14,19 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobPostings"})
 public class City {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name ="id")
     private int id;
 
-    @Column(name ="city",nullable = false,length=256)
-    private String city;
+    @Column(name ="city_name",nullable = false,length=256)
+    private String cityName;
 
     @OneToMany(mappedBy="city")
+    @JsonIgnore
     private List<JobPosting> jobPostings;
 
 }
