@@ -6,6 +6,7 @@ import com.sadik.hrmscf.core.adapters.mail.MailService;
 import com.sadik.hrmscf.core.utilities.business.BusinessRules;
 import com.sadik.hrmscf.core.utilities.email.FakeEmailService;
 import com.sadik.hrmscf.core.utilities.result.*;
+import com.sadik.hrmscf.core.verification.VerificationService;
 import com.sadik.hrmscf.dataAccess.abstracts.JobSeekerDao;
 import com.sadik.hrmscf.entities.concretes.JobSeeker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,15 @@ public class JobSeekerManager implements JobSeekerService {
     private JobSeekerDao jobSeekerDao;
     private FakeEmailService fakeEmailService;
     private MailService mailService;
+    private VerificationService verificationService;
 
     @Autowired
     public JobSeekerManager(JobSeekerDao jobSeekerDao,
-                            FakeEmailService fakeEmailService,MailService mailService) {
+                            FakeEmailService fakeEmailService,MailService mailService,VerificationService verificationService) {
         this.jobSeekerDao = jobSeekerDao;
         this.fakeEmailService = fakeEmailService;
         this.mailService=mailService;
+        this.verificationService=verificationService;
 
     }
 
@@ -46,7 +49,6 @@ public class JobSeekerManager implements JobSeekerService {
         if (!fakeEmailService.check()) {
             return new ErrorDataResult<>(Messages.EmailNotVerify);
         } else {
-            mailService.sendMail(jobSeeker.getEmail(),"Hrms doğrulama kodu","sitemize keşke gelmeseydin işsiz :D");
             return new SuccessDataResult<JobSeeker>(jobSeekerDao.save(jobSeeker), Messages.Success);
 
 
