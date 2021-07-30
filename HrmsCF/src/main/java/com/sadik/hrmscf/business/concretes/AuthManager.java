@@ -1,15 +1,13 @@
 package com.sadik.hrmscf.business.concretes;
 
-import com.sadik.hrmscf.business.abstracts.AuthService;
-import com.sadik.hrmscf.business.abstracts.EmployerService;
-import com.sadik.hrmscf.business.abstracts.JobSeekerService;
-import com.sadik.hrmscf.business.abstracts.UserService;
+import com.sadik.hrmscf.business.abstracts.*;
 import com.sadik.hrmscf.business.constans.Messages;
-import com.sadik.hrmscf.core.entity.User;
+import com.sadik.hrmscf.core.adapters.mail.MailService;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.core.utilities.result.SuccessDataResult;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
+import com.sadik.hrmscf.core.verification.VerificationService;
 import com.sadik.hrmscf.entities.concretes.Employer;
 import com.sadik.hrmscf.entities.concretes.JobSeeker;
 import com.sadik.hrmscf.entities.dtos.EmployerForRegisterDto;
@@ -18,6 +16,8 @@ import com.sadik.hrmscf.entities.dtos.UserForLoginDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -27,15 +27,21 @@ public class AuthManager implements AuthService {
     private EmployerService employerService;
     private UserService userService;
     private ModelMapper modelMapper;
+    private  MailService mailService;
+    private VerificationService verificationService;
 
     @Autowired
     public AuthManager(JobSeekerService jobSeekerService, EmployerService employerService,
-                       UserService userService,ModelMapper modelMapper)
+                       UserService userService,ModelMapper modelMapper
+                       ,MailService mailService,VerificationService verificationService)
     {
         this.jobSeekerService = jobSeekerService;
         this.employerService = employerService;
         this.userService=userService;
         this.modelMapper=modelMapper;
+        this.mailService=mailService;
+        this.verificationService=verificationService;
+
     }
 
     @Override
@@ -53,7 +59,10 @@ public class AuthManager implements AuthService {
        jobSeeker.setDateOfBirth(jobSeekerRegisterDto.getDateOfBirth());
        jobSeeker.setGender(jobSeekerRegisterDto.getGender());*/
         JobSeeker jobSeeker=modelMapper.map(jobSeekerRegisterDto,JobSeeker.class);
-        return  this.jobSeekerService.add(jobSeeker);
+        jobSeekerService.add(jobSeeker);
+       String code= verificationService.sendCode();
+        mailService.sendMail(jobSeekerRegisterDto.getEmail(),"Hrms verification code","Doğrulama kodunuz : " + code + "\nİsminiz : "+jobSeekerRegisterDto.getFirstName()+"\nSoyisminiz : " + jobSeekerRegisterDto.getLastName()+"\nHrms websitesine hoş geldiniz...Güzel bi kariyer sizi bekliyor...\nSevgiyle Hrms Website");
+        return new SuccessDataResult<>(Messages.Success);
 
 
     }
@@ -71,4 +80,12 @@ public class AuthManager implements AuthService {
         return  new SuccessResult(Messages.Success);
 
     }
+/*    private void verificationCodeRecord(String code, int id ,String email) {
+
+        VerificationCode verificationCode = new VerificationCode(id,code,false,LocalDateTime.now());
+        this.verificationCodeService.add(verificationCode);
+        System.out.println("Verification code has been sent to " + email );
+
+    }*/
+
 }

@@ -14,11 +14,11 @@ public class MailManager implements MailService {
     @Override
     public void sendMail(String toEmail, String subject, String body) {
         SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
-        simpleMailMessage.setFrom("sadikortaoglan@gmail.com");
+        simpleMailMessage.setFrom("hrms@gmail.com");
         simpleMailMessage.setTo(toEmail);
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setText(body);
-        System.out.println("Mesaj Gönderildi");
+        System.out.println("send email");
 
         javaMailSender.send(simpleMailMessage);
     }
