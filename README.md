@@ -44,7 +44,7 @@
 
 ---
 
-##Madde 3 : Sisteme genel iş pozisyonu isimleri eklenebilmelidir. Örneğin Software Developer, Software Architect.*
+## Madde 3 : Sisteme genel iş pozisyonu isimleri eklenebilmelidir. Örneğin Software Developer, Software Architect.*
 
 ### Kabul Kriterleri:
 :sweat_drops:Bu pozisyonlar tekrar edemez. Kullanıcı uyarılır.
