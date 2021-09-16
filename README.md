@@ -6,7 +6,7 @@
 ---
 <br>
 
-[//]: <> ## *Gerçek email'e doğrulama mesajı gönderme*
+## *Gerçek email'e doğrulama mesajı gönderme*
 
 
 
