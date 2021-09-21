@@ -1,6 +1,7 @@
 package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.JobPostingService;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.entities.concretes.JobPosting;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/jobposting")
+@RequestMapping(path = RestPathContants.ROOT_JOBPOSTING_PATH)
 @CrossOrigin
 public class JobPostingsController {
 

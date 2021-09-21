@@ -3,6 +3,7 @@ package com.sadik.hrmscf.api.controllers;
 import com.sadik.hrmscf.business.abstracts.AuthService;
 import com.sadik.hrmscf.business.abstracts.EmployerService;
 import com.sadik.hrmscf.business.abstracts.JobSeekerService;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.entities.concretes.Employer;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping(path = RestPathContants.ROOT_AUTH_PATH)
 @CrossOrigin
 public class AuthController {
     JobSeekerService jobSeekerService;

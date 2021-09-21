@@ -19,16 +19,12 @@ public class JobSeekerManager implements JobSeekerService {
 
     private JobSeekerDao jobSeekerDao;
     private FakeEmailService fakeEmailService;
-    private MailService mailService;
-    private VerificationService verificationService;
 
     @Autowired
     public JobSeekerManager(JobSeekerDao jobSeekerDao,
-                            FakeEmailService fakeEmailService,MailService mailService,VerificationService verificationService) {
+                            FakeEmailService fakeEmailService) {
         this.jobSeekerDao = jobSeekerDao;
         this.fakeEmailService = fakeEmailService;
-        this.mailService=mailService;
-        this.verificationService=verificationService;
 
     }
 

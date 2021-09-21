@@ -2,6 +2,7 @@ package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.ProfessionService;
 import com.sadik.hrmscf.business.constans.Messages;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/profession")
+@RequestMapping(path = RestPathContants.ROOT_PROFESSİON_PATH)
 @CrossOrigin
 public class ProfessionsController {
     @Autowired

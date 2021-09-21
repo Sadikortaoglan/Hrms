@@ -1,6 +1,7 @@
 package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.JobSeekerService;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.entities.concretes.JobSeeker;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/jobseekers")
+@RequestMapping(path = RestPathContants.ROOT_JOBSEEKER_PATH)
 @CrossOrigin
 public class JobSeekersController {
 

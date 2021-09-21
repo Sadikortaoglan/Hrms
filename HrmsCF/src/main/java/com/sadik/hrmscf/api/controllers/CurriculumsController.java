@@ -1,6 +1,7 @@
 package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.CurriculumVitaeService;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.entities.concretes.CurriculumVitae;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/curriculumVitae")
+@RequestMapping(path = RestPathContants.ROOT_CURRICULUM_PATH)
 @CrossOrigin
 public class CurriculumsController {
     private CurriculumVitaeService curriculumVitaeService;
