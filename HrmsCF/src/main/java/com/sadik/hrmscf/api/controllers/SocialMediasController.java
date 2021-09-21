@@ -1,6 +1,7 @@
 package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.SocialMediaService;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.utilities.result.DataResult;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.entities.concretes.SocialMedia;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
-@RequestMapping("api/socialmedia")
+@RequestMapping(path = RestPathContants.ROOT_SOCİALMEDIA_PATH)
 @CrossOrigin
 public class SocialMediasController {
 

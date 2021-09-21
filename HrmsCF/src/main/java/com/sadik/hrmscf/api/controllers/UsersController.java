@@ -2,6 +2,7 @@ package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.UserService;
 import com.sadik.hrmscf.business.constans.Messages;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.entity.User;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.core.utilities.result.SuccessResult;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/users")
+@RequestMapping(path = RestPathContants.ROOT_USER_PATH)
 @CrossOrigin
 public class UsersController {
     private UserService userService;

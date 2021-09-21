@@ -1,6 +1,7 @@
 package com.sadik.hrmscf.api.controllers;
 
 import com.sadik.hrmscf.business.abstracts.LanguageService;
+import com.sadik.hrmscf.business.constans.RestPathContants;
 import com.sadik.hrmscf.core.utilities.result.Result;
 import com.sadik.hrmscf.entities.dtos.LanguageWithCurriculumVitaeDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/languages")
+@RequestMapping(path = RestPathContants.ROOT_LANGUAGE_PATH)
 @CrossOrigin
 public class LanguagesController {
 
