@@ -19,17 +19,17 @@ public class WorkExperiencesController {
     public WorkExperiencesController(WorkExperienceService workExperienceService) {
         this.workExperienceService = workExperienceService;
     }
-    @PostMapping("/workExperienceForJobSeekerAdd")
+    @PostMapping(value = RestPathContants.PATH_WORK_FOR_JOBSEEKER_ADD)
     public Result workExperienceForJobSeekerAdd(@RequestBody  WorkExperienceForCurriculumVitaeDto workExperienceForCurriculumVitaeDto ){
         return workExperienceService.workExperienceForJobSeekerAdd(workExperienceForCurriculumVitaeDto);
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<WorkExperience>> getall(){
         return workExperienceService.getall();
     }
 
-    @DeleteMapping("/deleteById")
+    @DeleteMapping(value = RestPathContants.PATH_DELETE_BY_ID)
     public Result deleteById(@RequestParam int id){
         return workExperienceService.delete(id);
     }

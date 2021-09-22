@@ -22,12 +22,12 @@ public class SchoolsController {
         this.schoolService = schoolService;
     }
 
-    @PostMapping("/schoolWithJobSeekerAdd")
+    @PostMapping(value = RestPathContants.PATH_SCHOOL_WITH_JOBSEEKER_ADD)
     public Result schoolWithJobSeekerAdd(@Valid @RequestBody SchoolWithCurriculumVitaeDto schoolWithCurriculumVitaeDto)
     {
         return  schoolService.schoolWithJobSeekerAdd(schoolWithCurriculumVitaeDto);
     }
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<School>> getall(){
         return schoolService.getall();
     }

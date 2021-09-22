@@ -24,7 +24,7 @@ public class EmployersController {
         this.employerService = employerService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<Employer>> getall() {
         return employerService.getAll();
     }

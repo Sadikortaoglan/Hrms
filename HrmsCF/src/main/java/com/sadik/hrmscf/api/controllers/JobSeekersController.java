@@ -23,17 +23,17 @@ public class JobSeekersController {
         this.jobSeekerService = jobSeekerService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<JobSeeker>> getAll() {
         return jobSeekerService.getAll();
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
     public DataResult<JobSeeker> add(@RequestBody JobSeeker jobSeeker) {
         return jobSeekerService.add(jobSeeker);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping(value = RestPathContants.PATH_DELETE)
     public Result delete(@RequestBody int id) {
         return jobSeekerService.delete(id);
     }

@@ -18,12 +18,12 @@ public class ProfessionsController {
     @Autowired
     private ProfessionService professionService;
 
-    @PostMapping("/add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
     public Result add(@RequestBody Profession profession){
         professionService.add(profession);
         return new SuccessResult(Messages.Success);
     }
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<Profession>> getall(){
         return professionService.getall();
     }

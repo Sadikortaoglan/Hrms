@@ -24,13 +24,13 @@ public class CitiesController {
         this.cityService = cityService;
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
 
     public Result add(@RequestBody City city){
     return cityService.add(city);
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<City>> getall(){
         return cityService.getall();
     }

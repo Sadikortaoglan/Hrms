@@ -21,13 +21,13 @@ public class SocialMediasController {
         this.socialMediaService = socialMediaService;
     }
 
-    @PostMapping("/SocialMediaWithJobSeeker")
+    @PostMapping(value = RestPathContants.PATH_SOCIALMEDIA_WITH_JOBSEEKER)
 
     public Result SocialMediaWithJobSeeker(@RequestBody SocialMediaForCurriculumVitaeDto socialMediaForCurriculumVitaeDto){
         return socialMediaService.SocialMediaWithJobSeeker(socialMediaForCurriculumVitaeDto);
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<SocialMedia>> getall(){
         return socialMediaService.getall();
     }

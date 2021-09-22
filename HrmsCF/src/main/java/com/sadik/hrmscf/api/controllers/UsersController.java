@@ -22,7 +22,7 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public List<User> getall() {
         return userService.getAll();
     }
@@ -37,7 +37,7 @@ public class UsersController {
         userService.delete(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
     public Result add(@RequestBody User user){
         return this.userService.add(user);
     }
