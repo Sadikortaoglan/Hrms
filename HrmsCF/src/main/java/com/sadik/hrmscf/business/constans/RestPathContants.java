@@ -48,11 +48,4 @@ public class RestPathContants {
 
 
 
-
-
-
-
-
-
-
 }
