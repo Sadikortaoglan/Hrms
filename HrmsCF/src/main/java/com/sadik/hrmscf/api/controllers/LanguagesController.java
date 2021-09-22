@@ -20,13 +20,13 @@ public class LanguagesController {
         this.languageService = languageService;
     }
 
-    @PostMapping("/languageWithJobSeekerAdd")
+    @PostMapping(value = RestPathContants.PATH_LANGUAGE_WITH_JOBSEEKER_ADD)
     public Result languageWithJobSeekerAdd(@RequestBody LanguageWithCurriculumVitaeDto languageWithCurriculumVitaeDto)
     {
         return languageService.languageWithJobSeekerAdd(languageWithCurriculumVitaeDto);
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public Result getall(){
       return  languageService.getall();
     }

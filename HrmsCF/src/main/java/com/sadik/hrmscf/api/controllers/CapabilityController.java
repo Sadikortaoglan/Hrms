@@ -21,12 +21,12 @@ public class CapabilityController {
         this.capabilityService = capabilityService;
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
     public Result jobSeekerAdd(@RequestBody CapabilitiesWithCurriculumVitaeDto capabilitiesWithCurriculumVitaeDto){
         return capabilityService.jobSeekerAdd(capabilitiesWithCurriculumVitaeDto);
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<Capabilities>> getall(){
         return capabilityService.getall();
     }

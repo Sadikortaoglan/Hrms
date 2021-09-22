@@ -32,19 +32,19 @@ public class AuthController {
         this.authService=authService;
     }
 
-    @PostMapping("/registerForJobSeeker")
+    @PostMapping(value = RestPathContants.PATH_REGISTER_JOBSEEKER)
     public DataResult<JobSeeker> registerForJobSeeker(@Valid @RequestBody JobSeekerRegisterDto jobSeekerRegisterDto)
     {
       return authService.registerForJobSeeker(jobSeekerRegisterDto);
 
     }
 
-    @PostMapping("/userForLogin")
+    @PostMapping(value = RestPathContants.PATH_USER_LOGIN)
     public Result login(@Valid @RequestBody UserForLoginDto userForLoginDto){
         return authService.UserForLogin(userForLoginDto);
     }
 
-    @PostMapping("/registerForEmployer")
+    @PostMapping(value = RestPathContants.PATH_REGISTER_EMPLOYER)
     public DataResult<Employer> employerForRegister(@Valid @RequestBody EmployerForRegisterDto employerForRegisterDto){
         return authService.registerForEmployer(employerForRegisterDto);
     }

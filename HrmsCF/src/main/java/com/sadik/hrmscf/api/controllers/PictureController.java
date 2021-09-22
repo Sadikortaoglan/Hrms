@@ -20,7 +20,7 @@ public class PictureController {
         this.pictureService = pictureService;
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
     public Result add(@ModelAttribute MultipartFile multipartFile,PictureWithUserDto pictureWithUserDto){
         return this.pictureService.add(pictureWithUserDto, multipartFile);
     }

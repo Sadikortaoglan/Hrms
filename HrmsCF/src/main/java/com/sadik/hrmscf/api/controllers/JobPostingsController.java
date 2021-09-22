@@ -25,22 +25,22 @@ public class JobPostingsController {
         this.jobPostingService = jobPostingService;
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
     public Result add(@RequestBody JobPostingForEmployerDto jobPostingForEmployerDto) {
         return this.jobPostingService.add(jobPostingForEmployerDto);
     }
 
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<JobPosting>> getAll() {
         return this.jobPostingService.getAll();
     }
 
-    @GetMapping("findByIsActiveTrue")
+    @GetMapping(value = RestPathContants.PATH_FIND_BY_IS_ACTIVE_TRUE)
     public DataResult<List<JobPosting>> findByActivateTrue() {
         return jobPostingService.findByActivateTrue();
     }
 
-    @PostMapping("/findUpdatedAtIsActiveTrue")
+    @PostMapping(value = RestPathContants.PATH_FIND_UPDATE_ACTIVE)
     public DataResult<List<JobPosting>> findUpdatedAtIsActiveTrue(@RequestBody LocalDate localDate) {
         return this.jobPostingService.findByUpdatedAtAndActivateTrue(localDate);
 

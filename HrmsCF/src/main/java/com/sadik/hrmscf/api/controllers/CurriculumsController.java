@@ -20,15 +20,15 @@ public class CurriculumsController {
         this.curriculumVitaeService = curriculumVitaeService;
     }
 
-    @PostMapping("coverletterForJobSeekerAdd")
+    @PostMapping(value = RestPathContants.PATH_COVERLETTER_FOR_JOBSEEKER_ADD)
     public Result coverletterForJobSeekerAdd(@RequestBody CoverletterForCurriculumVitaeDto coverletterForCurriculumVitaeDto){
         return curriculumVitaeService.coverletForJobSeekerAdd(coverletterForCurriculumVitaeDto);
     }
-    @GetMapping("/getall")
+    @GetMapping(value = RestPathContants.PATH_GETALL)
     public DataResult<List<CurriculumVitae>> getall(){
        return curriculumVitaeService.getAll();
     }
-    @GetMapping("/findByJobSeekerId")
+    @GetMapping(value = RestPathContants.PATH_FIND_BY_JOBSEEKER_ID)
     public CurriculumVitae findByJobSeekerId(@RequestParam int id){
        return curriculumVitaeService.findByJobSeekerId(id);
 

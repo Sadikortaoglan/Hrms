@@ -19,7 +19,7 @@ public class EmployeesController {
         this.employeeService = employeeService;
     }
 
-    @PostMapping("add")
+    @PostMapping(value = RestPathContants.PATH_ADD)
     public void add(@RequestBody Employee employee) {
         employeeService.add(employee);
     }
